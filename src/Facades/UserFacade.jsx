@@ -12,15 +12,28 @@ const getConferences = (test) => {
 
 const deleteTalk = (id) => {
   const options = makeOptions("DELETE");
-  return fetch(URL + "/api/info/deletetalk" + id, options)
-    .then((res) => res.json())
-    .then((res) => handleHttpErrors(res))
-    .then((json) => {});
+  return fetch(URL + "/api/info/deletetalk/" + id, options).then((res) =>
+    handleHttpErrors(res)
+  );
 };
 
 const createConference = (body) => {
   const options = makeOptions("POST", body);
   return fetch(URL + "/api/info/createconf", options).then((res) =>
+    handleHttpErrors(res)
+  );
+};
+
+const createSpeaker = (body) => {
+  const options = makeOptions("POST", body);
+  return fetch(URL + "/api/info/createspeaker", options).then((res) =>
+    handleHttpErrors(res)
+  );
+};
+
+const createTalk = (body) => {
+  const options = makeOptions("POST", body);
+  return fetch(URL + "/api/info/createtalk", options).then((res) =>
     handleHttpErrors(res)
   );
 };
@@ -61,6 +74,8 @@ const userFacade = {
   getUsername,
   deleteTalk,
   createConference,
+  createSpeaker,
+  createTalk,
 };
 
 export default userFacade;

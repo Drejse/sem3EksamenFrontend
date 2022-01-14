@@ -4,6 +4,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CreateConference from "./CreateConference";
 import userFacade from "../Facades/UserFacade";
 import { GetConferences } from "./GetConferences.jsx";
+import CreateSpeaker from "./CreateSpeaker";
+import CreateTalk from "./CreateTalk";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -24,6 +26,11 @@ export const Home = (props) => {
     userFacade.getConferences(test);
   });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    userFacade.deleteTalk();
+  };
+
   return (
     <Container className={classes.Container}>
       <>
@@ -33,10 +40,15 @@ export const Home = (props) => {
           <tbody>
             <GetConferences />
           </tbody>
-          <input placeholder="Enter Id of talk to delete" />
-          <button onClick={userFacade.deleteTalk}>Delete Talk</button>
-
-          <CreateConference />
+          <form onSubmit={handleSubmit}>
+            <input placeholder="Enter Id of talk to delete" />
+            <button type="submit">Delete Talk</button>
+          </form>
+          <div style={{ maxWidth: "1000px" }}>
+            <CreateConference />
+            <CreateSpeaker />
+            <CreateTalk />
+          </div>
         </div>
       </>
     </Container>

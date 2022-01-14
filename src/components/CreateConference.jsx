@@ -17,11 +17,6 @@ const CreateConference = () => {
     const value = target.value;
     const name = target.name;
     setConference({ ...conference, [name]: value });
-
-    console.log(conference.name);
-    console.log(conference.pLanguage);
-    console.log(conference.yearsOfExperience);
-    console.log(conference.pricePrHour);
   };
 
   const handleSubmit = (e) => {
@@ -33,7 +28,6 @@ const CreateConference = () => {
     <>
       <div className="conference">
         <form onSubmit={handleSubmit}>
-          <p>conferenceName:</p>
           <input
             onChange={handleChange}
             name="conferenceName"
@@ -42,7 +36,7 @@ const CreateConference = () => {
           ></input>
 
           <br />
-          <p>location:</p>
+
           <input
             onChange={handleChange}
             name="location"
@@ -51,7 +45,7 @@ const CreateConference = () => {
           ></input>
 
           <br />
-          <p>capacity:</p>
+
           <input
             onChange={handleChange}
             name="capacity"
@@ -60,7 +54,7 @@ const CreateConference = () => {
           ></input>
 
           <br />
-          <p>date:</p>
+
           <input
             onChange={handleChange}
             name="date"
@@ -69,7 +63,7 @@ const CreateConference = () => {
           ></input>
 
           <br />
-          <p>time:</p>
+
           <input
             onChange={handleChange}
             name="time"
