@@ -3,12 +3,27 @@ import apiFacade from "./apiFacade";
 import SERVER_URL from "../constant";
 const URL = SERVER_URL;
 
-function getConferences(test) {
+const getConferences = (test) => {
   const options = makeOptions("GET");
   return fetch(URL + "/api/info/conf", options)
     .then((res) => handleHttpErrors(res))
     .then((data) => test(data));
-}
+};
+
+const deleteTalk = (id) => {
+  const options = makeOptions("DELETE");
+  return fetch(URL + "/api/info/deletetalk" + id, options)
+    .then((res) => res.json())
+    .then((res) => handleHttpErrors(res))
+    .then((json) => {});
+};
+
+const createConference = (body) => {
+  const options = makeOptions("POST", body);
+  return fetch(URL + "/api/info/createconf", options).then((res) =>
+    handleHttpErrors(res)
+  );
+};
 
 function makeOptions(method, body) {
   var opts = {
@@ -44,6 +59,8 @@ const getUsername = () => {
 const userFacade = {
   getConferences,
   getUsername,
+  deleteTalk,
+  createConference,
 };
 
 export default userFacade;

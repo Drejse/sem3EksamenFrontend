@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Table, Button, Form } from "react-bootstrap";
 import { makeStyles, Container } from "@material-ui/core";
 import userFacade from "../Facades/UserFacade";
 
@@ -24,7 +25,7 @@ export const GetConferences = () => {
   return (
     <Container className={classes.Container}>
       <>
-        <table class="table">
+        <table class="Table">
           <thead style={{ paddingRight: "20px" }}>
             <th>Conference Name</th>
             <th>Location</th>
